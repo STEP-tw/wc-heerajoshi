@@ -36,4 +36,9 @@ describe("wc", function() {
     let userArg = { option: "w", files: ["fileWithSpace"] };
     assert.equal(wc(userArg, fs), expected);
   });
+  it("should handle if option is -c for single file ", function() {
+    let expected = "\t14 fileWithSpace";
+    let userArg = { option: "c", files: ["fileWithSpace"] };
+    assert.equal(wc(userArg, fs), expected);
+  });
 });

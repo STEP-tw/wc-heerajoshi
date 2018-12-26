@@ -20,11 +20,15 @@ const checkOption = function(
   if (option == "l") {
     return TAB + lineCount + " " + file;
   }
-  if (option == "w"){
-      return TAB + wordCount + " " + file;
+  if (option == "w") {
+    return TAB + wordCount + " " + file;
+  }
+  if (option == "c") {
+    return TAB + characterCount + " " + file;
   }
   return TAB + lineCount + TAB + wordCount + TAB + characterCount + " " + file;
 };
+
 const wc = function(userArgs, fs) {
   const { option, files } = userArgs;
   const content = fs.readFileSync(files[0], "utf8");

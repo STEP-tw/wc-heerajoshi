@@ -35,7 +35,7 @@ const { wc } = require("./src/lib.js");
 const { parser } = require("./src/parseInput.js");
 const main = function() {
   const userArgs = parser(process.argv.slice(2));
-  let result = wc(userArgs, fs);
+  const result = wc(userArgs, fs);
   console.log(result);
 };
 main();
