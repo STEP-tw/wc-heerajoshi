@@ -1,0 +1,25 @@
+{
+  "name": "wc.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wc.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/STEP-tw/wc-heerajoshi.git"
+  },
+  "author": "heerajoshi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/STEP-tw/wc-heerajoshi/issues"
+  },
+  "homepage": "https://github.com/STEP-tw/wc-heerajoshi#readme",
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}
