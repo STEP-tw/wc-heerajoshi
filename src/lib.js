@@ -20,11 +20,13 @@ const checkOption = function(
   if (option == "l") {
     return TAB + lineCount + " " + file;
   }
+  if (option == "w"){
+      return TAB + wordCount + " " + file;
+  }
   return TAB + lineCount + TAB + wordCount + TAB + characterCount + " " + file;
 };
 const wc = function(userArgs, fs) {
   const { option, files } = userArgs;
-  console.log("options are", option);
   const content = fs.readFileSync(files[0], "utf8");
   const lineCount = getLineCount(content);
   const wordCount = getWordCount(content);

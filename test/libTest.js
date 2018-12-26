@@ -26,9 +26,14 @@ describe("wc", function() {
     let userArg = { option: "lwc", files: ["fileWithSpace"] };
     assert.equal(wc(userArg, fs), expected);
   });
-  it("should handle default arguments for a single file", function() {
+  it("should handle if option is -l for single file ", function() {
     let expected = "\t5 fileWithSpace";
     let userArg = { option: "l", files: ["fileWithSpace"] };
+    assert.equal(wc(userArg, fs), expected);
+  });
+  it("should handle if option is -w for single file ", function() {
+    let expected = "\t5 fileWithSpace";
+    let userArg = { option: "w", files: ["fileWithSpace"] };
     assert.equal(wc(userArg, fs), expected);
   });
 });
