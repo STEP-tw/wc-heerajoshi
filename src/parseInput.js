@@ -1,13 +1,41 @@
-const parser = function(userArgs) {
-  let result = {
-    option: "lwc",
-    files: userArgs.slice(0)
+const isOption = x => x.startsWith("-");
+
+const optionType = function(option) {
+  const optionValue = {
+    l: "lines",
+    w: "words",
+    c: "chars"
   };
-  if (userArgs[0].startsWith("-") && !userArgs[1].startsWith("-")) {
-    result.option = userArgs[0].slice(1);
-    result.files = userArgs.slice(1);
+  return optionValue[option];
+};
+
+const splitOptions = function(options) {
+  return options.slice(1).split("");
+};
+
+const concat = (list1, list2) => list1.concat(list2);
+
+const concatOption = function(matrix) {
+  return matrix.reduce(concat);
+};
+
+const parseOptions = function(optionArgs) {
+  let parsedOptions = optionArgs.map(splitOptions);
+  parsedOptions = concatOption(parsedOptions);
+  return parsedOptions.map(optionType);
+};
+
+const parser = function(args) {
+  const firstArg = args[0];
+  let files = args;
+  let options = ["lines", "words", "chars"];
+  if (isOption(firstArg)) {
+    let optionArgs = args.filter(isOption);
+    options = parseOptions(optionArgs);
+    let fileNameIndex = optionArgs.length;
+    files = args.slice(fileNameIndex);
   }
-  return result;
+  return { options, files };
 };
 
 module.exports = { parser };
