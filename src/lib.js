@@ -1,4 +1,5 @@
 const { NEWLINE, isNotEmpty, add, TAB } = require("./stringUtil.js");
+const { formatOutput } = require("./formatOutput.js");
 
 const getLines = content => content.split(NEWLINE);
 const getCharacterCount = content => content.split("").length;
@@ -24,13 +25,6 @@ const getFileDetails = function(fs, options, file) {
     fileDetails[option] = counts[option];
   });
   return fileDetails;
-};
-
-const formatOutput = function(fileDetails) {
-  const isNumber = x => !isNaN(x);
-  const { lines, words, chars, name } = fileDetails[0];
-  let output = [lines, words, chars].filter(isNumber);
-  return TAB + output.join(TAB) + " " + name;
 };
 
 const wc = function(userArgs, fs) {
