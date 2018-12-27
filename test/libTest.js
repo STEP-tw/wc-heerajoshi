@@ -12,7 +12,8 @@ const createFileSystem = function(files) {
 describe("wc", function() {
   const files = {
     file: "1\n2\n3\n4\n5\n",
-    fileWithSpace: "1\n2  \n3  \n4\n5\n"
+    fileWithSpace: "1\n2  \n3  \n4\n5\n",
+    file1:"one\ntwo\nthree"
   };
   const fs = createFileSystem(files);
   it("should return line,  word and character count with filename for single file", function() {
@@ -41,4 +42,22 @@ describe("wc", function() {
     let userArg = { options: ['chars'], files: ["fileWithSpace"] };
     assert.equal(wc(userArg, fs), expected);
   });
+  it("should return counts based on given options when a single file and two options together is given ", function() {
+    let userArg = {options: ["lines","words"], files:["fileWithSpace"]}
+    const expectedOutput = "\t5\t5 fileWithSpace";
+    assert.equal(wc(userArg,fs), expectedOutput);
+  });
+
+  it("should return counts based on given options when a single file and multiple options together is given ", function() {
+    let userArg = {options:["words","lines","chars"], files:["file1"]}
+    const expectedOutput = "\t2\t3\t13 file1";
+    assert.equal(wc(userArg,fs), expectedOutput);
+  });
+
+  it("should return  counts based on given options and fileName when multiple options in different order", function() {
+    let userArg = {options:["lines","chars","words"], files:["file1"]}
+    const expectedOutput = "\t2\t3\t13 file1";
+    assert.equal(wc(userArg,fs), expectedOutput);
+  });
+
 });
