@@ -86,4 +86,12 @@ describe("wc", function() {
     let expectedOutput = "\t5\t10 file\n\t2\t13 file1\n\t7\t23 total";
     assert.deepEqual(actualOutput, expectedOutput);
   });
+  it("should return line count for multiple files when multiple line count option and multiple files  are given together", function() {
+    let actualOutput = wc(
+      { options: ["lines","lines"], files: ["file", "file1"] },
+      fs
+    );
+    let expectedOutput = "\t5 file\n\t2 file1\n\t7 total";
+    assert.deepEqual(actualOutput, expectedOutput);
+  });
 });
